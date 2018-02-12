@@ -1,0 +1,12 @@
+<h1>Create An Answer</h1>
+
+<h3>Question: <%=@question%></h3>
+
+<h3>Answers:</h3><br/>
+
+<%= form_for(@answer) do |f| %>
+  <%= f.label :answer %>
+  <%= f.text_field :result %>
+  <%= f.submit %>
+
+<% end %>

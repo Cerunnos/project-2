@@ -1,0 +1,16 @@
+<h1>Login</h1>
+
+<% if flash[:message] %>
+<p><%= flash[:message] %></p>
+<% end %>
+
+<%= form_tag '/login' do  %>
+<label for = "name"> Username</label>
+<%=text_field_tag :'user[username]'  %><br>
+<label for = "password"> Password</label>
+<%=text_field_tag :'user[password]'  %><br>
+<%= submit_tag 'Login' %>
+
+<%=link_to 'Sign-up', new_user_path%>
+
+<% end %>
