@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   root 'sessions#new'
   resources :users
   resources :quizzes
-  resources :questions
-  resources :answers
+  resources :questions do
+    resources :answers
+  end
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  post '/questions/new', to: 'answers#create'
+  get '/quizzes/:quiz_id/take_quiz', to: 'quizzes#take_quiz'
+  post '/quizzes/:quiz_id/take_quiz', to: 'quizzes#grade_quiz'
 end

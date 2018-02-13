@@ -18,7 +18,8 @@ class QuestionsController < ApplicationController
     @question.content=params[:question][:content]
     @question.quiz_id=current_user.quizzes.last.id
     @question.save
-    redirect_to new_answers_path
+
+    redirect_to "/questions/#{@question.id}/answers/new"
   end
 
 

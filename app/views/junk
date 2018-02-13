@@ -1,0 +1,9 @@
+% @question.answers.each do |ans| %>
+  <%= f.fields_for :answer do |a| %>
+    <%= a.label :result %>
+    <%= a.text_field :result1 %>
+
+  <% end %>
+  <br>
+
+<% end %>

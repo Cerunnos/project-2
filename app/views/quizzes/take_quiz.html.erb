@@ -1,0 +1,20 @@
+<h3>Take Quiz</h3>
+
+<h2>Quiz Title: <%= @quiz.title %></h2>
+
+<% form_for (@quiz) do |f|  %>
+<% @quiz.questions.each do |q| %>
+<%= f.label "#{q.content}"%>
+<%= f.radio_button "[:content][:answers]" %>
+<%= f.submit %>
+<%end%>
+
+
+
+<!-- # <% @quiz.questions.each do |q| %>
+# <li><%= q.content %></li>
+#   <% q.answers.each do |a| %>
+#    <%=a.result %>
+#    <% end %>
+#   <% end %>
+# <% end %> -->

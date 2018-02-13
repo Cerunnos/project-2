@@ -9,13 +9,36 @@ class AnswersController < ApplicationController
   end
 
   def new
+
     @answer=Answer.new
-    @question=current_user.quizzes.last.questions.last.content
+     @question = Question.find_by(id: params[:question_id])
+
   end
 
   def create
-    @answer=Answer.new
-    byebug
+    @question = Question.find_by(id: params[:question_id])
+
+    # params[:answers].each do |k,v|
+    #   new_ans = @question.answers.build(result: v)
+    #   new_ans.save
+    # end
+
+    solution = ""
+    params[:solution].each do |key, value|
+      if value == "1"
+        solution = {"#{key}": value }
+      end
+    end
+
+    params[:answers].each do |k,value|
+      if k == solution.keys.first.to_s
+        Answer.create(result: value, solution?: true, question_id: @question.id)
+      else
+        Answer.create(result: value, question_id: @question.id)
+      end
+    end
+
+    redirect_to quiz_path(@question.quiz_id)
   end
 
 

@@ -1,0 +1,3 @@
+<% @quizzes.each do |q| %>
+<%= link_to "#{q.title}", "/quizzes/#{q.id}/take_quiz"  %>
+<% end %>

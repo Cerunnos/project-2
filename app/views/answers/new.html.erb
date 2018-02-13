@@ -1,12 +1,39 @@
 <h1>Create An Answer</h1>
 
-<h3>Question: <%=@question%></h3>
+<h3>Question: <%= @question.content %></h3>
 
-<h3>Answers:</h3><br/>
+<h3>Write Your Answers:</h3><br/>
 
-<%= form_for(@answer) do |f| %>
-  <%= f.label :answer %>
-  <%= f.text_field :result %>
-  <%= f.submit %>
+<%= form_tag ("/questions/#{@question.id}/answers") do |f| %>
 
+  <%= fields_for :answers do |a| %>
+    <%= a.label :result %>
+    <%= a.text_field :result1 %><br>
+
+    <%= a.label :result %>
+    <%= a.text_field :result2 %><br>
+
+    <%= a.label :result %>
+    <%= a.text_field :result3 %><br>
+
+    <%= a.label :result %>
+    <%= a.text_field :result4 %><br>
+
+    <%= fields_for :solution do |b| %>
+      <%= b.label :result %>
+      <%= b.check_box :result1 %><br>
+
+      <%= b.label :result %>
+      <%= b.check_box :result2 %><br>
+
+      <%= b.label :result %>
+      <%= b.check_box :result3 %><br>
+
+      <%= b.label :result %>
+      <%= b.check_box :result4 %><br>
+
+    <%= a.submit %>
+
+    <% end %>
+  <% end %>
 <% end %>
