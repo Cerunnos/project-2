@@ -2,19 +2,12 @@
 
 <h2>Quiz Title: <%= @quiz.title %></h2>
 
-<% form_for (@quiz) do |f|  %>
+<%= form_tag "/quizzes/#{@quiz.id}/take_quiz", method: 'POST' %>
 <% @quiz.questions.each do |q| %>
-<%= f.label "#{q.content}"%>
-<%= f.radio_button "[:content][:answers]" %>
-<%= f.submit %>
+<%=q.content%><br>
+<% q.answers.each do |a| %>
+<%= a.result %>
+<%=check_box_tag("#{a.question_id}","#{a.result}",false) %><br>
+<% end %>
 <%end%>
-
-
-
-<!-- # <% @quiz.questions.each do |q| %>
-# <li><%= q.content %></li>
-#   <% q.answers.each do |a| %>
-#    <%=a.result %>
-#    <% end %>
-#   <% end %>
-# <% end %> -->
+<%= submit_tag "Submit Quiz" %>

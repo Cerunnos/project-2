@@ -22,11 +22,27 @@ class QuizzesController < ApplicationController
 
   def take_quiz
     @quiz = Quiz.find_by(id: params[:quiz_id])
-    byebug
   end
 
   def grade_quiz
+    @quiz=Quiz.find_by(id: params[:quiz_id])
+    params.each do |k,v|
+      if Question.find_by(id: k)
+        q=Question.find(k)
+        q.answers.each do |a|
+          if a.result == v && a.solution? == true
+            'User is correct'
+          else
+            'User is wrong'
+          end
+        end
+      end
+    end
+    redirect_to "/quizzes/#{@quiz.id}/results_quiz"
+  end
 
+  def results_quiz
+byebug
   end
 
 private

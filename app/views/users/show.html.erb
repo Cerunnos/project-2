@@ -2,5 +2,5 @@
 <%current_user.quizzes.each do |q|%><br/>
 <%=link_to "#{q.title}", "/quizzes/#{q.id}"%>
 <%end%><br>
-
-<%=link_to 'Make a Quiz', new_quiz_path%>
+<p></p>
+<%=link_to 'Make a Quiz', new_quiz_path%> <%= link_to 'All Quizzes', quizzes_path %>

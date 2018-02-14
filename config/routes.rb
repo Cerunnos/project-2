@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/quizzes/:quiz_id/take_quiz', to: 'quizzes#take_quiz'
   post '/quizzes/:quiz_id/take_quiz', to: 'quizzes#grade_quiz'
+  get '/quizzes/:quiz_id/results_quiz', to: 'quizzes#results_quiz'
 end
