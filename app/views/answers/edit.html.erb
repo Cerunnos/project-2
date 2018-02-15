@@ -1,0 +1,11 @@
+
+<%= @answer.result %>
+
+<%= form_tag ("/questions/#{@question.id}/answers/#{@answer.id}"), method: 'PATCH' do |f| %>
+
+  <%= fields_for :answers do |a| %>
+    <%= a.label :result %>
+    <%= a.text_field :result %><br>
+    <%= a.submit %>
+    <% end %>
+    <% end %>

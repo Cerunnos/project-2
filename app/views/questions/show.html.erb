@@ -1,0 +1,6 @@
+<h2><%= @question.content %></h2>
+<% @question.answers.each do |a|%>
+<li><%= link_to "#{a.result}","/questions/#{@question.id}/answers/#{a.id}/edit" %></li> 
+<% end %>
+
+<%= link_to 'Edit Question', edit_question_path %>

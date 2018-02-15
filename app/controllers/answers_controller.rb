@@ -41,5 +41,18 @@ class AnswersController < ApplicationController
     redirect_to quiz_path(@question.quiz_id)
   end
 
+def edit
+
+  @question = Question.find_by(id: params[:question_id])
+  @answer = Answer.find_by(id: params[:id])
+
+end
+
+def update
+    @question = Question.find_by(id: params[:question_id])
+    @answer = Answer.find_by(id: params[:id])
+    @answer.update(result: params[:answers][:result])
+    redirect_to question_path(@question)
+end
 
 end

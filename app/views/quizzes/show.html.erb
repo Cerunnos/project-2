@@ -2,19 +2,24 @@
 
 
 <% if !(@quiz.questions.empty?) %>
-<% @quiz.questions.each do |q| %>
-<li><%= q.content %></li>
 
+  <% @quiz.questions.each do |q| %>
+<ol>
+   <%= link_to "#{q.content}", question_path(q) %>
+</ol>
   <% q.answers.each do |a| %>
   <li><%= a.result %></li>
-
-  <% end %>
+  <% end %><br>
   <% end %>
 <% else %>
   <p>This Quiz has no questions </p>
   <p>Add Questions To Your Quiz</p>
-  <% end %>
+  <% end %><br>
 
   <%= link_to 'Add New Question', new_question_path %>
 
-  <%= link_to 'Homepage', user_path(@quiz.user_id) %>
+  <%= link_to 'Submit Quiz', user_path(@quiz.user_id) %>
+
+  <%= link_to 'Edit Quiz', edit_quiz_path  %>
+
+  <%= link_to 'HomePage', user_path(current_user) %>

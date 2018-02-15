@@ -11,6 +11,7 @@ class QuizzesController < ApplicationController
 
   def new
     @quiz=Quiz.new
+    @quiz.questions.build
   end
 
   def create
@@ -41,9 +42,24 @@ class QuizzesController < ApplicationController
     redirect_to "/quizzes/#{@quiz.id}/results_quiz"
   end
 
-  def results_quiz
-byebug
+
+def edit
+  @quiz = Quiz.find_by(id: params[:id])
+end
+
+def update
+  @quiz = Quiz.find_by(id: params[:id])
+  @quiz.update(quiz_params)
+  @quiz.save
+  redirect_to quiz_path(@quiz)
+end
+
+def destroy
+    @quiz = Quiz.find_by(id: params[:id])
+    @quiz.destroy
+    redirect_to quizzes_path
   end
+
 
 private
 

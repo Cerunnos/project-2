@@ -1,6 +1,8 @@
+<h3>Select a Quiz </h3>
+
 <% @quizzes.each do |q| %>
 <li> <%= link_to "#{q.title}", "/quizzes/#{q.id}/take_quiz"  %></li>
 <% end %>
 <p></p>
 
-<%= link_to "User Quizzes", "/users/#{current_user.id}" %>
+<%= link_to "My Quizzes", "/users/#{current_user.id}" %>
